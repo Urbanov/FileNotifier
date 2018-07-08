@@ -1,0 +1,18 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:FileNotifier"
+    x:Class="FileNotifier.MainWindow"
+    mc:Ignorable="d"
+    Title="FileNotifier settings" Height="150" Width="450" ResizeMode="NoResize"
+    Visibility="Hidden">
+    <Grid>
+        <CheckBox x:Name="autorunCheckbox" Content="Enable autorun" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
+            IsChecked="{Binding Path=AutorunEnabled, Mode=OneTime}"
+            Command="{Binding ToggleAutorun}"/>
+        <Label x:Name="directoryLabel" Content="{Binding Source={StaticResource Settings}, Path=Default.Directory}" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.074,0.667"/>
+        <Button x:Name="browseButton" Content="Choose directory" Command="{Binding Browse}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="109"/>
+    </Grid>
+</Window>
