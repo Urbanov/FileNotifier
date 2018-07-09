@@ -26,7 +26,7 @@ namespace FileNotifier.ViewModels
             watcher = new Watcher();
 
             watcher.NewFileCreated += Notify;
-            notifyService.NotifyIconClicked += OpenWindow;
+            notifyService.NotifyIconClicked += OpenSettingsWindow;
             notifyService.ExitRequested += CloseApplication;
 
             if (!string.IsNullOrEmpty(Manager.Directory))
@@ -40,7 +40,7 @@ namespace FileNotifier.ViewModels
             notifyService.Notify(e.Name);
         }
 
-        public void OpenWindow(object sender, EventArgs e)
+        public void OpenSettingsWindow(object sender, EventArgs e)
         {
             windowService.OpenSettingsWindow();
         }

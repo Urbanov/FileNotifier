@@ -15,6 +15,7 @@ namespace FileNotifier.Models
         public Watcher()
         {
             watcher = new FileSystemWatcher();
+            watcher.Created += new FileSystemEventHandler(FileSystemWatcher_FileCreated);
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -22,7 +23,6 @@ namespace FileNotifier.Models
         {
             watcher.Path = path;
             watcher.EnableRaisingEvents = true;
-            watcher.Created += new FileSystemEventHandler(FileSystemWatcher_FileCreated);
         }
 
         public event FileSystemEventHandler NewFileCreated;
