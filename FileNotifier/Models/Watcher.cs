@@ -28,7 +28,8 @@ namespace FileNotifier.Models
         public event FileSystemEventHandler NewFileCreated;
         private void FileSystemWatcher_FileCreated(object sender, FileSystemEventArgs e)
         {
-            if ((new FileInfo(e.FullPath).Attributes & FileAttributes.Hidden) == 0)
+            FileInfo file = new FileInfo(e.FullPath);
+            if ((file.Attributes & (FileAttributes.Hidden | FileAttributes.Temporary | FileAttributes.System)) == 0 && file.Extension != ".tmp")
             {
                 NewFileCreated?.Invoke(sender, e);
             }
